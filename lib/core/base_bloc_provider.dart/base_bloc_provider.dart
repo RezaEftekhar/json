@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:json_place_holder/albums/presentation/bloc/albums_bloc.dart';
 import 'package:json_place_holder/comments/presentation/bloc/comments_bloc.dart';
 import 'package:json_place_holder/photos/presentation/bloc/photos_bloc.dart';
+import 'package:json_place_holder/post%20request/presentation/bloc/post_request_bloc.dart';
 import 'package:json_place_holder/posts/presentation/bloc/posts_bloc.dart';
 import 'package:json_place_holder/todos/presentation/bloc/todos_bloc.dart';
 import 'package:json_place_holder/users/presentation/bloc/user_bloc.dart';
@@ -32,6 +33,9 @@ class BaseBlocProvider extends StatelessWidget {
       ),
       BlocProvider(
         create: (context) => GetIt.I<UserBloc>(),
+      ),
+      BlocProvider(
+        create: (context) => GetIt.I<PostRequestBloc>(),
       )
     ], child: child);
   }

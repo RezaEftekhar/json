@@ -15,6 +15,11 @@ import 'package:json_place_holder/photos/data/repository_impl/photos_repository_
 import 'package:json_place_holder/photos/domain/repository/photos_repository.dart';
 import 'package:json_place_holder/photos/domain/usecase/get_photos_usecase.dart';
 import 'package:json_place_holder/photos/presentation/bloc/photos_bloc.dart';
+import 'package:json_place_holder/post%20request/data/data_source/post_request_remote_data_source.dart';
+import 'package:json_place_holder/post%20request/data/repository_impl/post_request_repository_impl.dart';
+import 'package:json_place_holder/post%20request/domain/repository/post_request_repository.dart';
+import 'package:json_place_holder/post%20request/domain/usecase/post_request_usecase.dart';
+import 'package:json_place_holder/post%20request/presentation/bloc/post_request_bloc.dart';
 import 'package:json_place_holder/posts/data/dataSourse/posts_dataSource.dart';
 import 'package:json_place_holder/posts/data/repository_impl.dart/posts_repository_impl.dart';
 import 'package:json_place_holder/posts/domain/repository/posts_repo.dart';
@@ -99,5 +104,12 @@ void setUpLocator() {
   getIt.registerSingleton<GetUsersUsecase>(
       GetUsersUsecase(repository: getIt<UsersRepository>()));
   getIt.registerSingleton<UserBloc>(UserBloc(usecase: getIt<GetUsersUsecase>()));
+
+  //post request feature dependencies
+
+  getIt.registerSingleton<PostRequestRemoteDs>(PostRequestDataSourceImpl(apiProvider: getIt<ApiProvider>()));
+  getIt.registerSingleton<PostRequestRepository>(PostRequestRepositoryImpl(dataSource: getIt<PostRequestRemoteDs>()));
+  getIt.registerSingleton<PostRequestUsecase>(PostRequestUsecase(repository: getIt<PostRequestRepository>()));
+  getIt.registerSingleton<PostRequestBloc>(PostRequestBloc(usecase: getIt<PostRequestUsecase>()));
       
 }

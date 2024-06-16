@@ -20,5 +20,7 @@ class ApiProvider {
     return _singleton;
   }
 
-  Future<Response> get(path)async=>await _dio!.get(path);
+  Future<Response> get(path) async => await _dio!.get(path);
+  Future<Response> post(path, {Map<String, dynamic>? data}) async =>
+      await _dio!.post(path, data: data);
 }

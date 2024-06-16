@@ -11,4 +11,5 @@ List<HomeModel> homeModel = [
   HomeModel(title: 'photos'),
   HomeModel(title: 'todos'),
   HomeModel(title: 'users'),
+  HomeModel(title: 'Post Request')
 ];
