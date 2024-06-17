@@ -3,6 +3,7 @@ import 'package:json_place_holder/albums/presentation/screens/albums_screen.dart
 import 'package:json_place_holder/comments/presentation/screens/comments_screen.dart';
 import 'package:json_place_holder/common/models/home_model.dart';
 import 'package:json_place_holder/common/widgets/home_items_widget.dart';
+import 'package:json_place_holder/patch%20request/presentation/screens/patch_request_screen.dart';
 import 'package:json_place_holder/photos/presentation/screens/photos_screen.dart';
 import 'package:json_place_holder/post%20request/presentation/screens/post_request_screen.dart';
 import 'package:json_place_holder/posts/presentation/screens/posts_screen.dart';
@@ -71,6 +72,8 @@ class HomeScreen extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => const PostRequestScreen(),
                       ));
+                case 7:
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const PatchRequestScreen()));
               }
             },
           );

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:json_place_holder/albums/presentation/bloc/albums_bloc.dart';
 import 'package:json_place_holder/comments/presentation/bloc/comments_bloc.dart';
+import 'package:json_place_holder/patch%20request/presentation/bloc/patch_request_bloc.dart';
 import 'package:json_place_holder/photos/presentation/bloc/photos_bloc.dart';
 import 'package:json_place_holder/post%20request/presentation/bloc/post_request_bloc.dart';
 import 'package:json_place_holder/posts/presentation/bloc/posts_bloc.dart';
@@ -36,6 +37,9 @@ class BaseBlocProvider extends StatelessWidget {
       ),
       BlocProvider(
         create: (context) => GetIt.I<PostRequestBloc>(),
+      ),
+      BlocProvider(
+        create: (context) => GetIt.I<PatchRequestBloc>(),
       )
     ], child: child);
   }

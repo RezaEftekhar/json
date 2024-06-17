@@ -10,6 +10,11 @@ import 'package:json_place_holder/comments/domain/repository/comments_repo.dart'
 import 'package:json_place_holder/comments/domain/usecase/comments_usecase.dart';
 import 'package:json_place_holder/comments/presentation/bloc/comments_bloc.dart';
 import 'package:json_place_holder/core/network/api_provider.dart';
+import 'package:json_place_holder/patch%20request/data/data_source/patch_request_data_source.dart';
+import 'package:json_place_holder/patch%20request/data/repository_impl/patch_request_repository_impl.dart';
+import 'package:json_place_holder/patch%20request/domain/repository/patch_request.dart';
+import 'package:json_place_holder/patch%20request/domain/usecase/patch_request_usecase.dart';
+import 'package:json_place_holder/patch%20request/presentation/bloc/patch_request_bloc.dart';
 import 'package:json_place_holder/photos/data/dataSource/photos_data_source.dart';
 import 'package:json_place_holder/photos/data/repository_impl/photos_repository_impl.dart';
 import 'package:json_place_holder/photos/domain/repository/photos_repository.dart';
@@ -103,13 +108,27 @@ void setUpLocator() {
       UsersRepositoryImpl(dataSource: getIt<UsersRemoteDs>()));
   getIt.registerSingleton<GetUsersUsecase>(
       GetUsersUsecase(repository: getIt<UsersRepository>()));
-  getIt.registerSingleton<UserBloc>(UserBloc(usecase: getIt<GetUsersUsecase>()));
+  getIt
+      .registerSingleton<UserBloc>(UserBloc(usecase: getIt<GetUsersUsecase>()));
 
   //post request feature dependencies
 
-  getIt.registerSingleton<PostRequestRemoteDs>(PostRequestDataSourceImpl(apiProvider: getIt<ApiProvider>()));
-  getIt.registerSingleton<PostRequestRepository>(PostRequestRepositoryImpl(dataSource: getIt<PostRequestRemoteDs>()));
-  getIt.registerSingleton<PostRequestUsecase>(PostRequestUsecase(repository: getIt<PostRequestRepository>()));
-  getIt.registerSingleton<PostRequestBloc>(PostRequestBloc(usecase: getIt<PostRequestUsecase>()));
-      
+  getIt.registerSingleton<PostRequestRemoteDs>(
+      PostRequestDataSourceImpl(apiProvider: getIt<ApiProvider>()));
+  getIt.registerSingleton<PostRequestRepository>(
+      PostRequestRepositoryImpl(dataSource: getIt<PostRequestRemoteDs>()));
+  getIt.registerSingleton<PostRequestUsecase>(
+      PostRequestUsecase(repository: getIt<PostRequestRepository>()));
+  getIt.registerSingleton<PostRequestBloc>(
+      PostRequestBloc(usecase: getIt<PostRequestUsecase>()));
+
+  // Patch request feature dependencies
+  getIt.registerSingleton<PatchRequestRemoteDs>(
+      PatchRequestDataSourceImpl(apiProvider: getIt<ApiProvider>()));
+  getIt.registerSingleton<PatchRequestRepository>(
+      PatchRequestRepositoryImpl(dataSource: getIt<PatchRequestRemoteDs>()));
+  getIt.registerSingleton<PatchRequestUsecase>(
+      PatchRequestUsecase(repository: getIt<PatchRequestRepository>()));
+  getIt.registerSingleton<PatchRequestBloc>(
+      PatchRequestBloc(usecase: getIt<PatchRequestUsecase>()));
 }

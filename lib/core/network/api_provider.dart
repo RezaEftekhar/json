@@ -23,4 +23,5 @@ class ApiProvider {
   Future<Response> get(path) async => await _dio!.get(path);
   Future<Response> post(path, {Map<String, dynamic>? data}) async =>
       await _dio!.post(path, data: data);
+ Future<Response> patch(path,{Object? data})async=>await _dio!.patch(path,data: data);
 }
