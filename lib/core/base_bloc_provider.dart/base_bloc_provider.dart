@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:json_place_holder/albums/presentation/bloc/albums_bloc.dart';
+import 'package:json_place_holder/Features/albums/presentation/bloc/albums_bloc.dart';
 import 'package:json_place_holder/comments/presentation/bloc/comments_bloc.dart';
-import 'package:json_place_holder/patch%20request/presentation/bloc/patch_request_bloc.dart';
-import 'package:json_place_holder/photos/presentation/bloc/photos_bloc.dart';
-import 'package:json_place_holder/post%20request/presentation/bloc/post_request_bloc.dart';
-import 'package:json_place_holder/posts/presentation/bloc/posts_bloc.dart';
-import 'package:json_place_holder/todos/presentation/bloc/todos_bloc.dart';
-import 'package:json_place_holder/users/presentation/bloc/user_bloc.dart';
+import 'package:json_place_holder/Features/photos/presentation/bloc/photos_bloc.dart';
+import 'package:json_place_holder/Features/posts/presentation/bloc/posts_bloc.dart';
+import 'package:json_place_holder/Features/todos/presentation/bloc/todos_bloc.dart';
+import 'package:json_place_holder/Features/users/presentation/bloc/user_bloc.dart';
 
 class BaseBlocProvider extends StatelessWidget {
   const BaseBlocProvider({super.key, required this.child});
@@ -35,12 +33,8 @@ class BaseBlocProvider extends StatelessWidget {
       BlocProvider(
         create: (context) => GetIt.I<UserBloc>(),
       ),
-      BlocProvider(
-        create: (context) => GetIt.I<PostRequestBloc>(),
-      ),
-      BlocProvider(
-        create: (context) => GetIt.I<PatchRequestBloc>(),
-      )
+     
+     
     ], child: child);
   }
 }

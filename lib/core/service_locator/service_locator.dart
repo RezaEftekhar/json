@@ -1,45 +1,38 @@
 import 'package:get_it/get_it.dart';
-import 'package:json_place_holder/albums/data/dataSource/albums_dataSource.dart';
-import 'package:json_place_holder/albums/data/repository_impl/albums_repository_impl.dart';
-import 'package:json_place_holder/albums/domain/repository/albums_repository.dart';
-import 'package:json_place_holder/albums/domain/usecase/albums_usecase.dart';
-import 'package:json_place_holder/albums/presentation/bloc/albums_bloc.dart';
+import 'package:json_place_holder/Features/albums/data/dataSource/albums_dataSource.dart';
+import 'package:json_place_holder/Features/albums/data/repository_impl/albums_repository_impl.dart';
+import 'package:json_place_holder/Features/albums/domain/repository/albums_repository.dart';
+import 'package:json_place_holder/Features/albums/domain/usecase/albums_usecase.dart';
+import 'package:json_place_holder/Features/albums/presentation/bloc/albums_bloc.dart';
+import 'package:json_place_holder/Features/posts/domain/usecase/put_post_request_usecase.dart';
 import 'package:json_place_holder/comments/data/dataSource/comments_data_source.dart';
 import 'package:json_place_holder/comments/data/repository_impl/comments_repository_mpl.dart';
 import 'package:json_place_holder/comments/domain/repository/comments_repo.dart';
 import 'package:json_place_holder/comments/domain/usecase/comments_usecase.dart';
 import 'package:json_place_holder/comments/presentation/bloc/comments_bloc.dart';
 import 'package:json_place_holder/core/network/api_provider.dart';
-import 'package:json_place_holder/patch%20request/data/data_source/patch_request_data_source.dart';
-import 'package:json_place_holder/patch%20request/data/repository_impl/patch_request_repository_impl.dart';
-import 'package:json_place_holder/patch%20request/domain/repository/patch_request.dart';
-import 'package:json_place_holder/patch%20request/domain/usecase/patch_request_usecase.dart';
-import 'package:json_place_holder/patch%20request/presentation/bloc/patch_request_bloc.dart';
-import 'package:json_place_holder/photos/data/dataSource/photos_data_source.dart';
-import 'package:json_place_holder/photos/data/repository_impl/photos_repository_impl.dart';
-import 'package:json_place_holder/photos/domain/repository/photos_repository.dart';
-import 'package:json_place_holder/photos/domain/usecase/get_photos_usecase.dart';
-import 'package:json_place_holder/photos/presentation/bloc/photos_bloc.dart';
-import 'package:json_place_holder/post%20request/data/data_source/post_request_remote_data_source.dart';
-import 'package:json_place_holder/post%20request/data/repository_impl/post_request_repository_impl.dart';
-import 'package:json_place_holder/post%20request/domain/repository/post_request_repository.dart';
-import 'package:json_place_holder/post%20request/domain/usecase/post_request_usecase.dart';
-import 'package:json_place_holder/post%20request/presentation/bloc/post_request_bloc.dart';
-import 'package:json_place_holder/posts/data/dataSourse/posts_dataSource.dart';
-import 'package:json_place_holder/posts/data/repository_impl.dart/posts_repository_impl.dart';
-import 'package:json_place_holder/posts/domain/repository/posts_repo.dart';
-import 'package:json_place_holder/posts/domain/usecase/get_posts_usecase.dart';
-import 'package:json_place_holder/posts/presentation/bloc/posts_bloc.dart';
-import 'package:json_place_holder/todos/data/data_source/todos_data_source.dart';
-import 'package:json_place_holder/todos/data/repository_impl/todos_repository_impl.dart';
-import 'package:json_place_holder/todos/domain/repository/todos_repository.dart';
-import 'package:json_place_holder/todos/domain/usecase/get_todos_usecase.dart';
-import 'package:json_place_holder/todos/presentation/bloc/todos_bloc.dart';
-import 'package:json_place_holder/users/data/data_source.dart/users_data_source.dart';
-import 'package:json_place_holder/users/data/repository_impl/users_repository_impl.dart';
-import 'package:json_place_holder/users/domain/repository/users_repository.dart';
-import 'package:json_place_holder/users/domain/usecase/get_users_usecase.dart';
-import 'package:json_place_holder/users/presentation/bloc/user_bloc.dart';
+import 'package:json_place_holder/Features/photos/data/dataSource/photos_data_source.dart';
+import 'package:json_place_holder/Features/photos/data/repository_impl/photos_repository_impl.dart';
+import 'package:json_place_holder/Features/photos/domain/repository/photos_repository.dart';
+import 'package:json_place_holder/Features/photos/domain/usecase/get_photos_usecase.dart';
+import 'package:json_place_holder/Features/photos/presentation/bloc/photos_bloc.dart';
+import 'package:json_place_holder/Features/posts/data/dataSourse/posts_dataSource.dart';
+import 'package:json_place_holder/Features/posts/data/repository_impl.dart/posts_repository_impl.dart';
+import 'package:json_place_holder/Features/posts/domain/repository/posts_repo.dart';
+import 'package:json_place_holder/Features/posts/domain/usecase/get_posts_usecase.dart';
+import 'package:json_place_holder/Features/posts/domain/usecase/patch_request_usecase.dart';
+import 'package:json_place_holder/Features/posts/domain/usecase/post_requests_usecase.dart';
+import 'package:json_place_holder/Features/posts/presentation/bloc/posts_bloc.dart';
+import 'package:json_place_holder/Features/todos/data/data_source/todos_data_source.dart';
+import 'package:json_place_holder/Features/todos/data/repository_impl/todos_repository_impl.dart';
+import 'package:json_place_holder/Features/todos/domain/repository/todos_repository.dart';
+import 'package:json_place_holder/Features/todos/domain/usecase/get_todos_usecase.dart';
+import 'package:json_place_holder/Features/todos/presentation/bloc/todos_bloc.dart';
+import 'package:json_place_holder/Features/users/data/data_source.dart/users_data_source.dart';
+import 'package:json_place_holder/Features/users/data/repository_impl/users_repository_impl.dart';
+import 'package:json_place_holder/Features/users/domain/repository/users_repository.dart';
+import 'package:json_place_holder/Features/users/domain/usecase/get_users_usecase.dart';
+import 'package:json_place_holder/Features/users/presentation/bloc/user_bloc.dart'; 
 
 final getIt = GetIt.instance;
 
@@ -56,8 +49,18 @@ void setUpLocator() {
 
   getIt.registerSingleton<GetPostsUsecase>(
       GetPostsUsecase(repository: getIt<PostRepo>()));
-  getIt.registerSingleton<PostsBloc>(
-      PostsBloc(usecase: getIt<GetPostsUsecase>()));
+  getIt.registerSingleton<PostRequestUsecase>(
+      PostRequestUsecase(repository: getIt<PostRepo>()));
+  getIt.registerSingleton<PatchRequestUsecase>(
+      PatchRequestUsecase(repository: getIt<PostRepo>()));
+  getIt.registerSingleton<PutPostRequestUsecase>(
+      PutPostRequestUsecase(repository: getIt<PostRepo>()));
+  getIt.registerSingleton<PostsBloc>(PostsBloc(
+    getUsecase: getIt<GetPostsUsecase>(),
+    postUsecase: getIt<PostRequestUsecase>(),
+    patchusecase: getIt<PatchRequestUsecase>(),
+    putUsecase: getIt<PutPostRequestUsecase>(),
+  ));
 
   //Comments feature dependencies
   getIt.registerSingleton<CommentsRemoteDs>(
@@ -108,27 +111,6 @@ void setUpLocator() {
       UsersRepositoryImpl(dataSource: getIt<UsersRemoteDs>()));
   getIt.registerSingleton<GetUsersUsecase>(
       GetUsersUsecase(repository: getIt<UsersRepository>()));
-  getIt
-      .registerSingleton<UserBloc>(UserBloc(usecase: getIt<GetUsersUsecase>()));
-
-  //post request feature dependencies
-
-  getIt.registerSingleton<PostRequestRemoteDs>(
-      PostRequestDataSourceImpl(apiProvider: getIt<ApiProvider>()));
-  getIt.registerSingleton<PostRequestRepository>(
-      PostRequestRepositoryImpl(dataSource: getIt<PostRequestRemoteDs>()));
-  getIt.registerSingleton<PostRequestUsecase>(
-      PostRequestUsecase(repository: getIt<PostRequestRepository>()));
-  getIt.registerSingleton<PostRequestBloc>(
-      PostRequestBloc(usecase: getIt<PostRequestUsecase>()));
-
-  // Patch request feature dependencies
-  getIt.registerSingleton<PatchRequestRemoteDs>(
-      PatchRequestDataSourceImpl(apiProvider: getIt<ApiProvider>()));
-  getIt.registerSingleton<PatchRequestRepository>(
-      PatchRequestRepositoryImpl(dataSource: getIt<PatchRequestRemoteDs>()));
-  getIt.registerSingleton<PatchRequestUsecase>(
-      PatchRequestUsecase(repository: getIt<PatchRequestRepository>()));
-  getIt.registerSingleton<PatchRequestBloc>(
-      PatchRequestBloc(usecase: getIt<PatchRequestUsecase>()));
+  getIt.registerSingleton<UserBloc>(UserBloc(usecase: getIt<GetUsersUsecase>()));
+      
 }
